@@ -1,5 +1,5 @@
 
-<img align="right" src="/Assets/logoJeedom.png" width="150">
+<img align="right" src="Assets/logoJeedom.png" width="64">
 # php-sunPos - Jeedom
 
 ## Utilisation avec Jeedom
@@ -22,7 +22,7 @@ Il vous faudra pour çà deux plugins, gratuits:
 
 Voici le Virtuel sur le Dashboard:
 
-<p align="center"><img src="Assets/virtuel_dashboard.jpg" width="500"></p>
+<p align="center"><img src="Assets/virtuel_dashboard.jpg" width="427"></p>
 
 > Vous pouvez bien sûr modifier ces infos comme bon vous semble, dans le
 > Virtuel et dans le script, pour l'adapter à vos besoins.
@@ -57,7 +57,7 @@ Créez ensuite autant d'infos virtuelles que nécessaire. Seule l'info jour doit
 
 Vous pouvez aussi adapter l'affichage du Virtuel sur le Dashboard:
 
-<p align="center"><img src="virtuel_details.jpg" width="500"></p>
+<p align="center"><img src="Assets/virtuel_details.jpg" width="500"></p>
 
 
 ## Création du scénario
@@ -66,7 +66,7 @@ Créez ensuite un scénario (*Actif* bien sûr) programmé. Personnellement, le 
 
 Il s’exécute en moins d'une d'1sec et est entièrement local, sans nécessiter de connexion internet.
 
-<p align="center"><img src="scenario_general.jpg" width="500"></p>
+<p align="center"><img src="Assets/scenario_general.jpg" width="500"></p>
 
 Ensuite dans le scénario, nous allons simplement créer un bloc *Code* avec le code suivant dedans.
 Pour info, on peux aussi le faire avec un Plugin/Script et auto-actualisation. Mais personnellement, mon scénario possède d'autres blocs pour vérifier certaines choses ensuite dans certaines conditions. A vous d'adapter.
