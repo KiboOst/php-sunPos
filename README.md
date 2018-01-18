@@ -27,6 +27,10 @@ Sun data depends on your location, and changes everyday regarding date/time. So,
 
 Feel free to submit an issue or pull request to add more.
 
+<img align="right" src="Jeedom/Assets/logoJeedom.png" width="64">
+
+Jeedom user ? Check this [example](https://github.com/KiboOst/php-sunPos/tree/master/Jeedom) of integration into Jeedom!
+
 ## Requirements
 - PHP server (being on a NAS or online)
 
