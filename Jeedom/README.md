@@ -43,15 +43,9 @@ Voici le Virtuel sur le Dashboard:
 
 Créez ensuite autant d'infos virtuelles que nécessaire. Seule l'info jour doit avoir la valeur #sjour#, les autres seront renseignées par le code du scénario.
 
-> Encore une fois, vous pouvez mettre et nommer les infos virtuelles
-> comme vous voulez, et adapter le code plus bas pour correspondre.
+> Encore une fois, vous pouvez mettre et nommer les infos virtuelles comme vous voulez, et adapter le code plus bas pour correspondre.
 >
-> Par exemple, j'utilise les infos TropChaud et EtaitChaud pour
-> contrôler la fermeture automatique des volets en été quand il fait très
-> chaud dehors. A chacun d'adapter comme il le souhaite. De même, les infos Soleil
-> Rue, Pignon et Terrasse me servent à savoir si le soleil tape
-> directement sur les fenêtres correspondantes, en fonction de leur
-> orientation, gérée dans le code plus bas.
+> Par exemple, j'utilise les infos TropChaud et EtaitChaud pour contrôler la fermeture automatique des volets en été quand il fait très chaud dehors. A chacun d'adapter comme il le souhaite. De même, les infos Soleil Rue, Pignon et Terrasse me servent à savoir si le soleil tape directement sur les fenêtres correspondantes, en fonction de leur orientation, gérée dans le code plus bas. Pour celà il faut un module de température extérieure, que je récupère ici avec #[Jardin][Net.Exterieur][Température]#
 
 <p align="center"><img src="Assets/virtuel.jpg" width="500"></p>
 
@@ -125,7 +119,13 @@ else
   if ($isAfternoon == 1) cmd::byString("#[Maison][Sky Conditions][Etat]#")->event('Après-Midi');
   if ($isEvening == 1) cmd::byString("#[Maison][Sky Conditions][Etat]#")->event('Soir');
 }
+```
 
+
+Voici la partie, que vous devrez forcément adapter, qui récupère la température extèrieure et renseigne si telle ou telle façade est au soleil. A ajouter si nécessaire à la fin du script:
+
+
+```php
 //lighting:
 $facRue = array(30, 210);
 $isRueSun = 0;
@@ -166,8 +166,6 @@ else
     $isHot = round($TempExt - $hotThld, 2);
     cmd::byString("#[Maison][Sky Conditions][Trop Chaud]#")->event($isHot);
 }
-
-
 ```
 
 ## Et maintenant ?
