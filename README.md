@@ -9,6 +9,10 @@ This php class is an easy way to get sun data, giving latitude and longitude, an
 - Sun transit time
 - Sunset time
 
+<img align="right" src="Jeedom/Assets/logoJeedom.png" width="64">
+
+Jeedom user ? Check this [example](https://github.com/KiboOst/php-sunPos/tree/master/Jeedom) of integration into Jeedom!
+
 It also give you some data on the period of the day:
 
 - isDay, isMorning, isNoon, isAfternoon, isEvening</br>
@@ -26,10 +30,6 @@ You can developed tons of different scripts with your own sensors, scenarii and 
 Sun data depends on your location, and changes everyday regarding date/time. So, here is SunPos!
 
 Feel free to submit an issue or pull request to add more.
-
-<img align="right" src="Jeedom/Assets/logoJeedom.png" width="64">
-
-Jeedom user ? Check this [example](https://github.com/KiboOst/php-sunPos/tree/master/Jeedom) of integration into Jeedom!
 
 ## Requirements
 - PHP server (being on a NAS or online)
