@@ -102,6 +102,9 @@ $_SunPos = new sunPos($lat, $long, $timezone, $date, $time);
 
 ## Version history
 
+#### v 1.1 (2018-05-23)
+- Better noon, afternoon and evening calculation.
+
 #### v 1.0 (2017-11-23)
 - First public version!
 
