@@ -7,7 +7,7 @@ https://github.com/KiboOst/php-sunPos
 
 class sunPos{
 
-    public $_version = '1.0';
+    public $_version = '1.1';
 
     //user functions======================================================
 	public function getSunPos()
@@ -53,60 +53,25 @@ class sunPos{
 		if ($now > $sunrise and $now < $sunset) $isDay = 1;
 		if ($isDay == 1)
 		{
-			//do all in minutes!
-			$now = new DateTime($now);
-
-			$sunrise = new DateTime($sunrise);
-			$intervalRise = $sunrise->diff($now );
-			$intervalRise = $intervalRise->h * 60 + $intervalRise->i;
-			if ($now < $sunrise) $intervalRise *= -1;
-
-			$transit = new DateTime($transit);
-			$intervalTrans = $transit->diff($now );
-			$intervalTrans = $intervalTrans->h * 60 + $intervalTrans->i;
-			if ($now < $transit) $intervalTrans *= -1;
-
-			$sunset = new DateTime($sunset);
-			$intervalSet = $sunset->diff($now );
-			$intervalSet = $intervalSet->h * 60 + $intervalSet->i;
-			if ($now < $sunset) $intervalSet *= -1;
-
-			//get sun period along day according to day lenght:
-			$dayLenght = $sunset->diff($sunrise );
-			$dayLenght = $dayLenght->h * 60 + $dayLenght->i;
-			$sunnyFactor = $dayLenght / (24 * 60);
-
-			//compares all these:
-			$delta = 150 * $sunnyFactor; //larger delta in longer summer days
-
-			/*
-			echo 'intervalRise: ', $intervalRise, "<br>";
-			echo 'intervalTrans: ', $intervalTrans, "<br>";
-			echo 'intervalSet: ', $intervalSet, "<br>";
-			echo 'dayLenght: ', $dayLenght, "<br>";
-			echo 'sunnyFactor: ', $sunnyFactor, "<br>";
-			echo 'delta: ', $delta, "<br>";
-			*/
-
-			if ($intervalTrans < -$delta) $isMorning = 1;
-
-			if ($intervalTrans >= -$delta and $intervalTrans <= $delta)
+			if ($now <= '12:00:00') $isMorning = 1;
+			if ($now > '12:00:00' and $now < '14:00:00') $isNoon = 1;
+			if ($isMorning == 0 and $isNoon == 0)
 			{
-				$isMorning = 0;
-				$isNoon = 1;
-			}
+				$sunrise = new DateTime($sunrise);
+				$transit = new DateTime($transit);
+				$sunset = new DateTime($sunset);
+				$nowTime = new DateTime($now);
 
-			if ($intervalTrans > $delta)
-			{
-				$isNoon = 0;
-				$isAfternoon = 1;
-			}
+				$dayLenght = date_diff($sunset, $sunrise);
+				$dayLenght = $dayLenght->h * 60 + $dayLenght->i;
 
-			if ($intervalSet >= -$delta)
-			{
-				$isNoon = 0;
-				$isAfternoon = 0;
-				$isEvening = 1;
+				$sunsetDelta = date_diff($sunset, $nowTime);
+				$sunsetDelta = $sunsetDelta->h * 60 + $sunsetDelta->i;
+
+				$portion = pow($dayLenght / 12, 2) / 40;
+
+				if ($sunsetDelta < $portion) $isEvening = 1;
+				else $isAfternoon = 1;
 			}
 		}
 
