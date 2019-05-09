@@ -1,5 +1,6 @@
 
 <img align="right" src="Assets/logoJeedom.png" width="64">
+
 # php-sunPos - Jeedom
 
 ## Utilisation avec Jeedom
@@ -17,7 +18,7 @@ Et c'est plutôt simple, puisque cela va consister à:
 
 Il vous faudra pour çà deux plugins, gratuits:
 
-- Le plugin Outils de développement
+- Le plugin JeeXplorer
 - Le plugin Virtuel
 
 Voici le Virtuel sur le Dashboard:
@@ -30,7 +31,7 @@ Voici le Virtuel sur le Dashboard:
 ## Télécharger php-sunPos sur votre Jeedom
 
 - Récupérez le fichier phpSunPos.php
-- Sur votre Jeedom, avec le plugin Outils de développement, créez un dossier kiboost et un sous dossier SunPos à la racine, et mettez le phpSunPos.php  dedans.
+- Sur votre Jeedom, avec le plugin JeeXplorer, créez un dossier kiboost et un sous dossier SunPos à la racine, et mettez le phpSunPos.php  dedans.
 
 > Vous pouvez mettre le fichier où bon vous semble, il faudra simplement
 > changer la première ligne du code du scénario un peu plus bas. Dans
