@@ -97,10 +97,26 @@ $date = '1947-07-8';
 $time = '15:51';
 $_SunPos = new sunPos($lat, $long, $timezone, $date, $time);
 
+//You can ask for day state like this:
+$state = $_SunPos->getDayState();
+
+```
+
+By default, state of day is returned in english. You can pass sixth argument for language.
+Supported languages: 'en', 'fr', 'es'.
+
+```php
+$_SunPos = new sunPos($lat, $long, $timezone, false, false, 'fr');
+$state = $_SunPos->getDayState();
 ```
 
 
+
 ## Version history
+
+#### v 1.2 (2019-12-07)
+- New: getDayState()
+- New: call with last parameter lang. Supported: en, fr, es.
 
 #### v 1.1 (2018-05-23)
 - Better noon, afternoon and evening calculation.

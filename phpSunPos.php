@@ -1,4 +1,4 @@
-<?php
+ <?php
 /*
 
 https://github.com/KiboOst/php-sunPos
@@ -7,7 +7,7 @@ https://github.com/KiboOst/php-sunPos
 
 class sunPos{
 
-    public $_version = '1.1';
+    public $_version = '1.2';
 
     //user functions======================================================
 	public function getSunPos()
@@ -98,6 +98,17 @@ class sunPos{
 		}
 		if ($this->azimuth > $from and $this->azimuth < $to) return true;
 		return false;
+	}
+
+	public function getDayState() {
+	   if($this->isDay) {
+		   if($this->isMorning) return $this->dayPeriodName[$this->lang][1];
+		   if($this->isNoon) return $this->dayPeriodName[$this->lang][2];
+		   if($this->isAfternoon) return $this->dayPeriodName[$this->lang][3];
+		   if($this->isEvening) return $this->dayPeriodName[$this->lang][4];
+		   return $this->dayPeriodName[$this->lang][0];
+		}
+	   return $this->dayPeriodName[$this->lang][5];
 	}
 
 
@@ -191,6 +202,8 @@ class sunPos{
 		return array(number_format($el, 2), number_format($az, 2));
 	}
 
+	public $lang = 'en';
+
 	public $latitude = null;
 	public $longitude = null;
 	public $date = null;
@@ -209,9 +222,14 @@ class sunPos{
 	public $isEvening = null;
 
 	protected $dateFormat = 'Y-m-d';
+	protected $dayPeriodName = ['en' => ['day', 'morning', 'noon', 'afternoon', 'evening', 'night'],
+								'fr' => ['jour', 'matin', 'midi', 'après-midi', 'soir', 'nuit'],
+								'es' => ['dia', 'manana', 'medioda', 'tarde', 'noche', 'noche']
+								];
 
-    function __construct($latitude=0, $longitude=0, $timezone=false, $date=false, $time=false)
+    function __construct($latitude=0, $longitude=0, $timezone=false, $date=false, $time=false, $lang='en')
     {
+    	$this->lang = $lang;
         $this->latitude = $latitude;
         $this->longitude = $longitude;
 
