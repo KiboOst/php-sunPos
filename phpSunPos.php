@@ -7,7 +7,7 @@ https://github.com/KiboOst/php-sunPos
 
 class sunPos{
 
-    public $_version = '1.2';
+    public $_version = '1.3';
 
     //user functions======================================================
 	public function getSunPos()
@@ -82,21 +82,23 @@ class sunPos{
 		$this->isEvening = $isEvening;
 	}
 
-	public function isSunny($from=0, $to=0)
+	public function isSunny($from=0, $to=0, $sunPos=false)
 	{
-		if (is_null($this->azimuth))
-		{
-			$pos = $this->getSunPos();
-			$this->elevation = $pos['elevation'];
-			$this->azimuth = $pos['azimuth'];
+		if ($sunPos == false) {
+			if (is_null($this->azimuth))
+			{
+				$this->getSunPos();
+			}
+			$sunPos['elevation'] = $this->elevation;
+			$sunPos['azimuth'] = $this->azimuth;
 		}
 
 		if ($to < $from)
 		{
-			if ($this->azimuth < $to) $this->azimuth += 360;
+			if ($sunPos['azimuth'] < $to) $sunPos['azimuth'] += 360;
 			$to += 360;
 		}
-		if ($this->azimuth > $from and $this->azimuth < $to) return true;
+		if ($sunPos['azimuth'] > $from and $sunPos['azimuth'] < $to) return true;
 		return false;
 	}
 

@@ -114,6 +114,10 @@ $state = $_SunPos->getDayState();
 
 ## Version history
 
+#### v 1.3 (2024-09-27)
+- isSunny() now allow passing sunpos
+
+
 #### v 1.2 (2019-12-07)
 - New: getDayState()
 - New: call with last parameter lang. Supported: en, fr, es.
